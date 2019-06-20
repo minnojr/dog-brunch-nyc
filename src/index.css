@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#app-slogan {
+  position: absolute;
+  top: 75px;
+  left: 100px;
+  font-size: 15px;
+  font-weight: 900;
+  z-index: 999;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  text-shadow: #282c34;
+  margin: 0;
+}
+
+#app-header {
+  position: absolute;
+  top: 25px;
+  left: 100px;
+  font-size: 40px;
+  font-weight: 900;
+  z-index: 999;
+  font-family: 'Lilita One', cursive;
+  text-transform: uppercase;
+  text-shadow: #282c34;
+  margin: 0;
+}
+
+.leaflet-popup-content-wrapper {
+  height:300px;
+  width: 200px;
+}
