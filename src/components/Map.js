@@ -8,7 +8,7 @@ import Location from './Location'
 export default class Map extends Component {
 
     render() {
-        const centerPosition = [40.7208, -73.9560];
+        const centerPosition = [40.7305, -73.9730];
 
         return (
             <LeafMap
