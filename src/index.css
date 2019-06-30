@@ -1,10 +1,12 @@
-body {
+html, body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
 }
 
 code {
@@ -14,9 +16,9 @@ code {
 
 #app-slogan {
   position: absolute;
-  top: 75px;
-  left: 75px;
-  font-size: 15px;
+  top: 40px;
+  right: 50px;
+  font-size: 10.4px;
   font-weight: 900;
   z-index: 999;
   font-family: 'Open Sans', sans-serif;
@@ -27,9 +29,9 @@ code {
 
 #app-header {
   position: absolute;
-  top: 25px;
-  left: 75px;
-  font-size: 40px;
+  top: 10px;
+  right: 50px;
+  font-size: 25px;
   font-weight: 900;
   z-index: 999;
   font-family: 'Lilita One', cursive;
@@ -39,6 +41,87 @@ code {
 }
 
 .leaflet-popup-content-wrapper {
-  height:300px;
-  width: 200px;
+  height:453px;
+  width: 364px;
+  padding: 10px;
+}
+
+#ig_inner_panel {
+  max-height:275px;
+  max-width: 175px;
+}
+
+#header_logo {
+  height: 175px;
+  width: auto;
+}
+
+/* **** START Info Panel **** */
+
+#focus_info {
+  width: 50%;
+  height: 100vh;
+  z-index: 999;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#inner_info_panel {
+  /*max-height: 600px;*/
+  /*min-height: 600px;*/
+  height: 90%;
+  max-width: 500px;
+  min-width: 500px;
+  text-transform: uppercase;
+  padding: 20px 20px;
+  margin: 40px 35px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 20px solid #ededed;
+  -webkit-box-shadow: 2px 0px 99px -35px rgba(0,0,0,0.87);
+  -moz-box-shadow: 2px 0px 99px -35px rgba(0,0,0,0.87);
+  box-shadow: 2px 0px 99px -35px rgba(0,0,0,0.87);
+  overflow: scroll;
+}
+
+.panel_hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.05s, opacity 0.05s linear;
+}
+
+.panel_show {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0.22s, opacity 0.22s linear;
+  transition-delay: 0s;
+}
+
+#inner_info_panel h1, h2, h3, h4, h5, h6 {
+  text-align: left !important;
+  margin-bottom:5px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.location_name {
+  font-family: 'Lilita One', cursive;
+}
+
+#inner_info_panel #location_img {
+  width: 100%;
+  float: left;
+  height: auto;
+  border: 0.5px solid #ededed;
+  border-radius: 3px;
+  max-height: 425px;
+}
+
+
+
+/* **** END Info Panel **** */
+
+
+.leaflet-container .leaflet-control-attribution {
+  background: transparent !important;
 }

@@ -1,16 +1,59 @@
-import React, { Component } from 'react'
-import { Map as LeafMap, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet'
-import { locations } from "../utils/data";
+import React, {Component, Fragment} from 'react'
+import { connect } from "react-redux";
+import { Map as LeafMap, TileLayer, Marker, Popup, ZoomControl,  } from 'react-leaflet'
+// import { locations, houses } from "../utils/data";
+
 
 import Header from './Header'
 import Location from './Location'
+import InfoPanel from './InfoPanel'
 
-export default class Map extends Component {
+class Map extends Component {
+
+    state = {
+        centerLong: 40.723274,
+        centerLat: -73.991956,
+        focusMarkerId: 0,
+        focusOnMarker: false,
+        holdPosition: [0,0],
+        showInfo: 'panel_hide',
+        focusLocation: {}
+    };
+
+    changeCenter = (position, location) => {
+        console.log("change");
+      this.setState((prevState) => ({
+          centerLong:position[0],
+          centerLat: position[1] - 0.05,
+          focusMarkerId: location.id,
+          focusOnMarker: true,
+          holdPosition: position,
+          focusLocation: location,
+          showInfo: 'panel_show'
+      }))
+    };
+
+    popupClosed = (e) => {
+        console.log(e);
+        // if (this.state.focusOnMarker) {
+            this.setState((prevState) => ({
+                centerLong: prevState.holdPosition[0],
+                centerLat: prevState.holdPosition[1],
+                focusMarkerId: 0,
+                focusOnMarker: false,
+                focusLocation: {},
+                showInfo: 'panel_hide'
+            }))
+        // }
+    };
 
     render() {
-        const centerPosition = [40.7305, -73.9730];
+        const centerPosition = [this.state.centerLong, this.state.centerLat];
+
+        const { focusMarkerId, focusOnMarker, showInfo } = this.state;
 
         return (
+            <div>
             <LeafMap
                 center={centerPosition}
                 zoomControl={false}
@@ -20,55 +63,46 @@ export default class Map extends Component {
                 touchZoom={false}
                 boxZoom={false}
                 keyboard={false}
+                onPopupClose={this.popupClosed}>
+
+
             >
 
-                <Header/>
-
                 <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                    url='https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+                    attribution='Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+                    url='https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
                 />
 
-                { locations.map((location) => (
+                <Header />
+
+                <InfoPanel
+                    defocusMarker={this.popupClosed}
+                    showInfo={showInfo}
+                    focusLocation={this.state.focusLocation}
+                />
+
+                { this.props.locations && this.props.locations.map((location) => (
                     <Location
-                        location={location}
+                        key={location}
+                        locationId={location}
+                        changeCenter={this.changeCenter}
+                        focusMarkerId={focusMarkerId}
+                        focusOnMarker={focusOnMarker}
                     />
 
                 ))}
-
-                {/*<Marker position={clintonStBaking}>*/}
-                    {/*<Popup>*/}
-                        {/*Clinton St Baking Company*/}
-                    {/*</Popup>*/}
-                {/*</Marker>*/}
-
-
-                {/*<Marker position={bhDairy}>*/}
-                    {/*<Popup>*/}
-                        {/*B&H Dairy*/}
-                    {/*</Popup>*/}
-                {/*</Marker>*/}
-
-                {/*<Marker position={eggShopManhatten}>*/}
-                    {/*<Popup>*/}
-                        {/*Egg Shop Manhatten*/}
-                    {/*</Popup>*/}
-                {/*</Marker>*/}
-
-                {/*<Marker position={eggShopBrooklyn}>*/}
-                    {/*<Popup>*/}
-                        {/*Egg Shop Brooklyn*/}
-                    {/*</Popup>*/}
-                {/*</Marker>*/}
-
-
-
-                {/*<Marker position={position}>*/}
-                    {/*<Popup>*/}
-                        {/*NYC*/}
-                    {/*</Popup>*/}
-                {/*</Marker>*/}
             </LeafMap>
+            </div>
         )
     }
 }
+
+function mapStateToProps({ locations }) {
+    const empty = [];
+    return {
+        locations: locations ? Object.keys(locations) : empty
+    }
+}
+
+export default connect(mapStateToProps)(Map);
+
