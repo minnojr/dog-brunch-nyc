@@ -10,7 +10,7 @@ export default class Header extends Component {
             <div id="add-header-container d-flex flex-row">
                 <h4 id="app-header">Brunch Pup NYC</h4>
                 <h5></h5>
-                <h6 id="app-slogan">Dog friendly brunch spots in NYC</h6>
+                <h6 id="app-slogan">The "Bring your dog to brunch" map</h6>
 
             </div>
         )

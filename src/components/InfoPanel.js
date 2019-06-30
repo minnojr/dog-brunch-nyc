@@ -57,14 +57,17 @@ class InfoPanel extends Component {
                         <img id="location_img" src={image_url} />
                         <br />
                         <div>
-                            <h6><img src={ratingImage} /></h6>
+                            <h6><img className="rating_img" src={ratingImage} /></h6>
                         </div>
                         <hr />
-                        <div>
+                        <div className="panel_section">
+                            <h4 className="location_name panel_header">Address</h4>
                             <h6>{ address }, { city }</h6>
                         </div>
-                        <div>
-                            <h6>Price: { price }</h6>
+                        <hr />
+                        <div className="panel_section">
+                            <h4 className="location_name panel_header">Price</h4>
+                            <h6>{ price }</h6>
                         </div>
                         <hr />
                         <div>

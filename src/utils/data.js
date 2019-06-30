@@ -47,13 +47,13 @@ export const locations =
         //     address: '247 E 81st St, New York, NY 10028',
         //     position: [40.775138, -73.954353]
         // },
-        // {
-        //     _id: 102,
-        //     name: 'Boris and Horton',
-        //     city: 'New York',
-        //     address: '195 Avenue A, New York, NY 10009',
-        //     position: [40.729502, -73.981428]
-        // },
+        {
+            _id: 102,
+            name: 'Boris and Horton',
+            city: 'New York',
+            address: '195 Avenue A, New York, NY 10009',
+            position: [40.729502, -73.981428]
+        },
         // {
         //     _id: 103,
         //     name: 'Dog & Bone',
@@ -74,18 +74,18 @@ export const locations =
         //     city: 'New York',
         //     position: [40.728657, -73.988012]
         // },
-        {
-            _id: 107,
-            name: "Egg Shop",
-            city: 'Brooklyn',
-            position: [40.722235, -73.958513]
-        },
         // {
-        //     _id: 108,
-        //     name: "Clinton St Baking",
-        //     city: 'New York',
-        //     position: [40.728658, -73.988012]
+        //     _id: 107,
+        //     name: "Egg Shop",
+        //     city: 'Brooklyn',
+        //     position: [40.722235, -73.958513]
         // },
+        {
+            _id: 108,
+            name: "Clinton St Baking",
+            city: 'New York',
+            position: [40.728658, -73.988012]
+        },
         // {
         //     _id: 109,
         //     name: "Barking Dog",

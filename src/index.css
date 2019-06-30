@@ -11,6 +11,8 @@ html, body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  /*font-family: 'Roboto', sans-serif;*/
+  /*font-family: 'Baloo Paaji', cursive;*/
     monospace;
 }
 
@@ -21,7 +23,7 @@ code {
   font-size: 10.4px;
   font-weight: 900;
   z-index: 999;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
   text-shadow: #282c34;
   margin: 0;
@@ -34,7 +36,7 @@ code {
   font-size: 25px;
   font-weight: 900;
   z-index: 999;
-  font-family: 'Lilita One', cursive;
+  font-family: 'Baloo Paaji', cursive;
   text-transform: uppercase;
   text-shadow: #282c34;
   margin: 0;
@@ -76,9 +78,10 @@ code {
   text-transform: uppercase;
   padding: 20px 20px;
   margin: 40px 35px;
-  background-color: transparent;
+  /*background-color: transparent;*/
+  background-color: #F4B844;;
   border-radius: 10px;
-  border: 20px solid #ededed;
+  border: 3px solid #083863;
   -webkit-box-shadow: 2px 0px 99px -35px rgba(0,0,0,0.87);
   -moz-box-shadow: 2px 0px 99px -35px rgba(0,0,0,0.87);
   box-shadow: 2px 0px 99px -35px rgba(0,0,0,0.87);
@@ -101,23 +104,36 @@ code {
 #inner_info_panel h1, h2, h3, h4, h5, h6 {
   text-align: left !important;
   margin-bottom:5px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .location_name {
-  font-family: 'Lilita One', cursive;
+  font-family: 'Baloo Paaji', cursive;
 }
 
 #inner_info_panel #location_img {
   width: 100%;
   float: left;
   height: auto;
-  border: 0.5px solid #ededed;
+  /*border: 0.5px solid #ededed;*/
   border-radius: 3px;
   max-height: 425px;
 }
 
+.panel_header {
+  background-color: #00ACEA;
+  width: auto;
+  text-align: center !important;
+}
 
+.panel_section h6 {
+  text-align: center !important;
+}
+
+.rating_img {
+  width: 165px;
+  height: auto;
+}
 
 /* **** END Info Panel **** */
 

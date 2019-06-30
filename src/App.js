@@ -10,6 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 // To Do:
+// 0. Add icons for info in panel - drop mark for address, telephone for phone number etc, see yelp page
 // 1. helper methods for setting star image, get bigger better image versions
 // 2. also want to include font awesome dollar sign for money? helper method for this
 // 3. link address to "open up in good maps"... can we get users current location to enter in as well with geo locations?
