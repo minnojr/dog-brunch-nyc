@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import connect from "react-redux/es/connect/connect";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import PanelHeader from './PanelHeader'
+import PanelImage from './PanelImage'
+import PanelRating from './PanelRating'
+import PanelSection from './PanelSection'
 
 import reg_0 from '../images/regular_0.png';
 import reg_1 from '../images/regular_1.png';
@@ -16,14 +20,39 @@ import reg_5 from '../images/regular_5.png';
 
 class InfoPanel extends Component {
 
+    state = {
+        userCoords: []
+    };
+
     render() {
 
-        const { name, image_url, location, rating, price, url } = this.props.focusLocation;
-        const address = location ? location.address1 : ''
-        const city = location ? location.city : ''
+        navigator.geolocation.getCurrentPosition((res) => {
+            this.setState(() => ({
+                userCoords: [res.coords]
+            }))
+        });
+
+        const { name, image_url, location, rating, price, url, display_phone } = this.props.focusLocation;
+        const { userCoords } = this.state;
+
+        const latitude = userCoords[0] ? userCoords[0].latitude : [];
+        const longitude = userCoords[0] ? userCoords[0].longitude : [];
+
+        const address = location ? location.address1 : '';
+        const escapedAddress = encodeURI(address);
+
+        const city = location ? location.city : '';
+        const escapedCity = encodeURI(city);
+
+        const currState = location ? location.state : '';
+        const escapedState = encodeURI(currState);
+
+        const currName = name ? name : '';
+        const escapedName = encodeURI(currName);
+
+        const display_address = `${address}, ${city}`;
 
         let ratingImage = reg_0;
-
         if (rating === 1) {
             ratingImage = reg_1
         }  else if (rating === 1.5) {
@@ -46,35 +75,30 @@ class InfoPanel extends Component {
 
         return (
             <Fragment>
-
-                <div id="focus_info"  className={this.props.showInfo}>
+                <div id="focus_info"  className={`d-flex justify-content-center align-middle align-items-middle ${this.props.showInfo}`}>
                     <div className="d-flex flex-column" id="inner_info_panel">
-                        <h3 className="d-flex justify-content-between location_name">
-                            <span>{ name }</span>
-                            <span></span>
-                            <span onClick={() => this.props.defocusMarker()}><FontAwesomeIcon icon="times"/></span>
-                        </h3>
-                        <img id="location_img" src={image_url} />
-                        <br />
-                        <div>
-                            <h6><img className="rating_img" src={ratingImage} /></h6>
-                        </div>
-                        <hr />
-                        <div className="panel_section">
-                            <h4 className="location_name panel_header">Address</h4>
-                            <h6>{ address }, { city }</h6>
-                        </div>
-                        <hr />
-                        <div className="panel_section">
-                            <h4 className="location_name panel_header">Price</h4>
-                            <h6>{ price }</h6>
-                        </div>
-                        <hr />
-                        <div>
-                            <h6><a target="_blank" href={ url }>Yelp</a></h6>
-                        </div>
-                        <div>
-                            <h6 onClick={() => this.props.defocusMarker()}>Exit</h6>
+
+                        <PanelHeader name={ name } />
+                        <PanelImage image_url={ image_url }/>
+
+                        <div className="panel_content_div">
+
+                            <PanelRating ratingImage={ ratingImage }/>
+
+                            { address && (
+                                <PanelSection info={ address } icon="map-marker-alt" />
+                            )}
+
+                            { display_phone && (
+                                <PanelSection info={ display_phone } icon="phone" />
+                            )}
+
+                            { price && (
+                                <PanelSection info={ price } icon="money-bill-alt" />
+                            )}
+                            <div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,12 +108,5 @@ class InfoPanel extends Component {
     }
 }
 
-function mapStateToProps({ locations }, {  }) {
-    const empty = {};
-    return {
-        // location: locations ? locations[locationId] : empty,
-        // locationId
-    }
-}
 
-export default connect(mapStateToProps)(InfoPanel);
+export default InfoPanel;

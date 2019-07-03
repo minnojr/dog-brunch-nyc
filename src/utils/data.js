@@ -38,59 +38,66 @@ export const locations =
             name: 'Reunion',
             city: 'New York',
             address: '544 Union Ave, Brooklyn, NY 11211',
-            position: [40.717019, -73.951885]
         },
-        // {
-        //     _id: 101,
-        //     name: 'Hutch & Waldo Cafe',
-        //     city: 'New York',
-        //     address: '247 E 81st St, New York, NY 10028',
-        //     position: [40.775138, -73.954353]
-        // },
+        {
+            _id: 101,
+            name: 'Hutch & Waldo Cafe',
+            city: 'New York',
+            address: '247 E 81st St, New York, NY 10028',
+        },
         {
             _id: 102,
             name: 'Boris and Horton',
             city: 'New York',
             address: '195 Avenue A, New York, NY 10009',
-            position: [40.729502, -73.981428]
         },
-        // {
-        //     _id: 103,
-        //     name: 'Dog & Bone',
-        //     city: 'New York',
-        //     address: '162 E 25th Street New York, NY 10010',
-        //     position: [40.740384, -73.982493]
-        // },
+        {
+            _id: 103,
+            name: 'Dog & Bone',
+            city: 'New York',
+            address: '162 E 25th Street New York, NY 10010',
+        },
         {
             _id: 104,
             name: 'Pig Beach',
             city: 'New York',
             address: '480 Union St, Brooklyn, NY 11231',
-            position: [40.679742, -73.988738]
         },
-        // {
-        //     _id: 105,
-        //     name: "B&H Dairy",
-        //     city: 'New York',
-        //     position: [40.728657, -73.988012]
-        // },
-        // {
-        //     _id: 107,
-        //     name: "Egg Shop",
-        //     city: 'Brooklyn',
-        //     position: [40.722235, -73.958513]
-        // },
+        {
+            _id: 105,
+            name: 'Barking Dog Luncheonette',
+            city: 'New York',
+        },
+        {
+            _id: 106,
+            name: 'Boat Basin Café',
+            city: 'New York',
+        },
+        {
+            _id: 107,
+            name: 'The Bean',
+            city: 'New York',
+        },
         {
             _id: 108,
-            name: "Clinton St Baking",
+            name: 'Habana Outpost',
             city: 'New York',
-            position: [40.728658, -73.988012]
         },
-        // {
-        //     _id: 109,
-        //     name: "Barking Dog",
-        //     city: 'New York',
-        //     address: '1678 3rd Ave, New York, NY 10128',
-        //     position: [40.784315, -73.950443]
-        // }
+        {
+            _id: 109,
+            name: 'Brooklyn Cider House',
+            city: 'New York',
+        },
+        {
+            id_: 110,
+            name: "Fred's",
+            city: "New York",
+            address: "476 Amsterdam Ave, New York, NY 10024",
+            source: "https://www.timeout.com/newyork/bars/best-dog-friendly-restaurants-in-NYC"
+        },
+        {
+            _id: 111,
+            name: "The Park",
+            city: "New York",
+        }
     ];

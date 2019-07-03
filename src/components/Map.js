@@ -5,6 +5,7 @@ import { Map as LeafMap, TileLayer } from 'react-leaflet'
 import Header from './Header'
 import Location from './Location'
 import InfoPanel from './InfoPanel'
+import Loader from './Loader'
 
 
 class Map extends Component {
@@ -18,13 +19,14 @@ class Map extends Component {
     }
 
     state = {
-        centerLong: 40.723274,
-        centerLat: -73.991956,
+        centerLong: 40.733274,
+        centerLat: -73.988888,
         focusMarkerId: 0,
         focusOnMarker: false,
         holdPosition: [0,0],
         showInfo: 'panel_hide',
-        focusLocation: {}
+        focusLocation: {},
+        loading: true
     };
 
     changeCenter = (position, location) => {
@@ -60,10 +62,10 @@ class Map extends Component {
         const centerPosition = [this.state.centerLong, this.state.centerLat];
 
         const { focusMarkerId, focusOnMarker, showInfo } = this.state;
+        const { loader } = this.props;
 
         return (
             <Fragment>
-
                 <InfoPanel
                     defocusMarker={this.panelClosed}
                     showInfo={showInfo}
@@ -82,6 +84,10 @@ class Map extends Component {
                         keyboard={false}
                         onPopupClose={this.panelClosed}>
                     >
+
+                        { !loader && (
+                            <Loader />
+                        )}
 
                         <TileLayer
                             attribution='Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
@@ -107,10 +113,11 @@ class Map extends Component {
     }
 }
 
-function mapStateToProps({ locations }) {
+function mapStateToProps({ locations, loader }) {
     const empty = [];
     return {
-        locations: locations ? Object.keys(locations) : empty
+        locations: locations ? Object.keys(locations) : empty,
+        loader
     }
 }
 

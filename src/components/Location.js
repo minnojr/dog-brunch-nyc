@@ -8,7 +8,7 @@ import connect from "react-redux/es/connect/connect";
 
 let myIcon = L.icon({
     iconUrl: require('../images/dog_marker_line.png'),
-    iconSize: [33, 34],
+    iconSize: [43, 44],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
 });
